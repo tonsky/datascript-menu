@@ -1,0 +1,17 @@
+* { box-sizing: border-box; }
+
+body, input { font: 16px/28px 'San Francisco Display'; } 
+body { width: 700px; margin: 40px auto; }
+
+h1 { font-weight: 600; color: #444; }
+.guests, .menu { width: 50%; float: left; }
+.menu { position: fixed; left: 50%; }
+
+.person { margin: 28px 0; font-weight: 500; }
+.order, .positions { margin: 0 0 0 16px; }
+.order { color: #999; font-weight: 400; }
+.positions { color: #000; list-style: none; padding: 0; }
+
+.id { font-weight: 400; color: #aaa; font-size: 11px; margin: 0 0 0 4px; position: relative; top: -5px; }
+.position-edit > input { width: 230px; border: none; border-bottom: 1px solid #ccc; padding: 2px 0px 0; margin: 10px 0; }
+.position-edit > input:focus { outline: none; border-bottom: 2px solid #a3ccf5; margin-bottom: 9px; }
