@@ -3,11 +3,10 @@
 
   :dependencies [
     [org.clojure/clojure "1.7.0-alpha4"]
-    [org.clojure/clojurescript "0.0-2371" :exclusions [org.mozilla/rhino]]
+    [org.clojure/clojurescript "0.0-2511"]
     [org.clojure/core.async "0.1.338.0-5c5012-alpha"]
-    [datascript "0.6.0"]
-    [sablono "0.2.22"]
-    [com.facebook/react "0.11.2"]
+    [datascript "0.7.2"]
+    [rum "0.1.0"]
   ]
 
   :plugins [
@@ -19,27 +18,18 @@
       { :id "prod"
         :source-paths  ["src"]
         :compiler {
-          :externs       ["react/externs/react.js"]
           :preamble      ["react/react.min.js"]
           :output-to     "web/menu.min.js"
           :optimizations :advanced
           :pretty-print  false
         }}
+      { :id "dev"
+        :source-paths  ["src"]
+        :compiler {
+          :output-to     "web/menu.js"
+          :output-dir    "web/target-cljs"
+          :optimizations :none
+          :source-map    true
+        }}
   ]}
-  
-  :profiles {
-    :dev {
-      :cljsbuild {
-        :builds [
-          { :id "dev"
-            :source-paths  ["src"]
-            :compiler {
-              :output-to     "web/menu.js"
-              :output-dir    "web/out"
-              :optimizations :none
-              :source-map    true
-            }}
-      ]}
-    }
-  }
 )

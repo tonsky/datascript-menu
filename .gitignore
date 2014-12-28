@@ -7,6 +7,6 @@ pom.xml.asc
 *.class
 /.lein-*
 /.nrepl-port
-/web/out/*
+/web/target-cljs/*
 /web/*.js
 .DS_Store
