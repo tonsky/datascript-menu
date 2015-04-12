@@ -5,7 +5,7 @@
     [org.clojure/clojure "1.7.0-beta1"]
     [org.clojure/clojurescript "0.0-3196"]
     [datascript "0.10.0"]
-    [rum "0.2.6"]
+    [rum "0.2.6" :exclusions [cljsjs/react]]
   ]
 
   :plugins [
@@ -21,6 +21,11 @@
           :optimizations :advanced
           :pretty-print  false
           :warnings {:single-segment-namespace false}
+          :foreign-libs [
+            { :file "react/react-0.12.2.min.js"
+              :provides ["cljsjs.react"]}
+          ]
+          :externs ["react/externs.js"]
         }}
       { :id "dev"
         :source-paths  ["src"]
@@ -31,6 +36,10 @@
           :optimizations :none
           :source-map    true
           :warnings {:single-segment-namespace false}
+          :foreign-libs [
+            { :file "react/react-0.12.2.min.js"
+              :provides ["cljsjs.react"]}
+          ]
         }}
   ]}
 )
