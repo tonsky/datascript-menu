@@ -2,11 +2,10 @@
   :global-vars  {*warn-on-reflection* true}
 
   :dependencies [
-    [org.clojure/clojure "1.7.0-alpha4"]
-    [org.clojure/clojurescript "0.0-2511"]
-    [org.clojure/core.async "0.1.338.0-5c5012-alpha"]
-    [datascript "0.7.2"]
-    [rum "0.1.0"]
+    [org.clojure/clojure "1.7.0-beta1"]
+    [org.clojure/clojurescript "0.0-3196"]
+    [datascript "0.10.0"]
+    [rum "0.2.6"]
   ]
 
   :plugins [
@@ -18,18 +17,20 @@
       { :id "prod"
         :source-paths  ["src"]
         :compiler {
-          :preamble      ["react/react.min.js"]
-          :output-to     "web/menu.min.js"
+          :output-to     "target/menu.js"
           :optimizations :advanced
           :pretty-print  false
+          :warnings {:single-segment-namespace false}
         }}
       { :id "dev"
         :source-paths  ["src"]
         :compiler {
-          :output-to     "web/menu.js"
-          :output-dir    "web/target-cljs"
+          :main          datascript-menu
+          :output-to     "target/menu.js"
+          :output-dir    "target"
           :optimizations :none
           :source-map    true
+          :warnings {:single-segment-namespace false}
         }}
   ]}
 )

@@ -1,9 +1,8 @@
 (ns datascript-menu
   (:require
     [clojure.string :as str]
-    [sablono.core :as s :include-macros true]
     [datascript :as d]
-    [rum :include-macros true]
+    [rum]
     [datascript-menu.gen :as gen]))
 
 (enable-console-print!)
@@ -70,7 +69,7 @@
 
 (def position-view-mixin (listen-for-mixin (fn [pid] [[:e :a] [pid :position/name]]))) ;; concrete mixin
 
-(rum/defc position-view-mixin position-view [pid]
+(rum/defc position-view < position-view-mixin [pid]
   (let [p (d/entity @conn pid)]
     [:li.position
       (:position/name p)
@@ -116,3 +115,4 @@
 ;; (d/listen! conn
 ;;   (fn [tx-data]
 ;;     (rum/mount (page (:db-after tx-data)) (.-body js/document))))
+
